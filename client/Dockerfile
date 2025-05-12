@@ -1,17 +1,13 @@
-
-FROM node:lts-bullseye-slim
+FROM node:18
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY ./package.json .
 
-
-RUN npm install
+RUN yarn install 
 
 COPY . .
 
+EXPOSE 5174
 
-EXPOSE 4173
-EXPOSE 5173
-
-CMD ["npm", "start"] 
+CMD ["yarn", "dev", "--host"]
